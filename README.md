@@ -1,1 +1,2 @@
-# LLM-Comparison
+# Article Generator Chatbot Using Open-Source Language Models
+This project builds an article generator chatbot using three different open-source large language models (LLMs): Gemini Pro, T5, and Cerebras-GPT. The aim is to evaluate these models' capabilities in generating coherent, engaging articles based on user prompts, assess their performance, and determine which LLM is best suited for article creation. Each model has unique strengths, and we’ll explore their capabilities, limitations, and recommended use cases.
