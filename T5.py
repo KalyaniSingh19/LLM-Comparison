@@ -3,27 +3,23 @@ from transformers import T5ForConditionalGeneration, T5Tokenizer
 import torch
 from textstat import text_standard, lexicon_count
 
-# Load T5 model and tokenizer
 model_name = "t5-base"
 model = T5ForConditionalGeneration.from_pretrained(model_name)
 tokenizer = T5Tokenizer.from_pretrained(model_name)
 
-# Streamlit app configuration
 st.set_page_config(page_title="T5 Text Generation Demo")
 st.title("T5 Model Text Generation")
 
-# Input text box
 st.write("Enter your input text below:")
 user_input = st.text_area("Input Text")
 
-# Button to generate response
 if st.button("Generate"):
     with st.spinner("Generating..."):
-        # Encode input and generate output
+       
         input_ids = tokenizer(user_input, return_tensors="pt").input_ids
         output_ids = model.generate(input_ids, max_length=50)
 
-        # Decode and display output
+     
         output_text = tokenizer.decode(output_ids[0], skip_special_tokens=True)
         st.subheader("Output:")
         st.write(output_text)
@@ -36,7 +32,6 @@ def check_quality(output_text):
 
 quality_check = st.button("Check Answer Quality")
 
-# If quality check button is clicked
 if quality_check and output_text:
     length, word_count, complexity = check_quality(output_text)
 
